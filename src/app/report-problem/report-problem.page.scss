@@ -1,0 +1,51 @@
+ion-content {
+    --background: #FFFFFF;
+    --color: #000000;
+}
+
+.header {
+    background-image: url("https://blog.tiket.com/wp-content/uploads/Gambar-Pemandangan-Alam-Terindah-Danau-Toba.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: #FFFFFF;
+    overflow: auto;
+}
+
+.header-inside {
+    padding: 15px;
+    overflow: auto;
+}
+
+.header-inside--icon-left {
+    width: 15%;
+    left: 0;
+    text-align: left;
+    height: 100%;
+}
+
+.header-inside--title-center {
+    width: 70%;
+    text-align: center;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+.header-inside--icon-right {
+    width: 15%;
+    right: 0;
+    text-align: right;
+    height: 100%;
+}
+
+.float-left {
+    float: left;
+}
+
+.overlay {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+}

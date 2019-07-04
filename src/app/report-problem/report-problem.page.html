@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="header">
+    <div class="overlay header-inside">
+
+      <div class="header-inside--icon-left float-left">
+        <img class="icon" src="assets/acuo-icons/rectangle_2@3x.png" alt="acuo-icons1">
+      </div>
+
+      <div class="header-inside--title-center float-left">
+        <img class="icon avatar" src="assets\acuo-avatar\group-6@3x.png" alt="acuo-avatar1">
+        <h5>Maintenance records</h5>
+      </div>
+
+      <div class="header-inside--icon-right float-left">
+        <img class="icon" src="assets\cancel\rectangle@3x.png" alt="acuo-cancel1">
+      </div>
+
+    </div>
+  </div>
+
+  <ion-list padding>
+
+    <ion-item lines="none" *ngFor="let problemName of problems; let i = index; let j = last;">
+      <ion-label>{{problemName['problem']}}</ion-label>
+      <ion-checkbox slot="start" color="medium" [(ngModel)]="problemName['isChecked']" (click)="toggle(problemName, i)">
+      </ion-checkbox>
+
+      <ion-input style="border-bottom: 1px solid grey" *ngIf="j" [(ngModel)]="Description" (keyup)="onKey($event)">
+      </ion-input>
+    </ion-item>
+
+    <section>
+      <ion-button expand="block" ion-button (click)="submit()">Submit</ion-button>
+    </section>
+
+    <ion-item lines="none">
+      <ion-checkbox slot="start" mode="ios" color="medium" [(ngModel)]="tellRepair"></ion-checkbox>
+      <ion-label>Tell me when the repair is complete</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
