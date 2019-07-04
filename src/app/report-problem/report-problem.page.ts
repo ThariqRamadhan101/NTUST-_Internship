@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http'
 export class ReportProblemPage implements OnInit {
 
   File: any = [];
-  Device_ID: string = '';
-  Email: string = 'M12345@mail.ntust.edu.tw';
+  Device_ID: string = "MA_B1_01";
+  Email: string = "johnny258147@gmail.com";
   ErrorType = 0;
   Description: string = '';
 
@@ -47,15 +47,16 @@ export class ReportProblemPage implements OnInit {
       console.log("You must fill problem")
     } else {
       const reportProblems = {
-        'File': this.File,
-        'Device_ID': this.Device_ID,
-        'Email': this.Email,
-        'ErrorType': this.ErrorType,
-        'Description': this.Description
+        "File": this.File,
+        "Device_ID": this.Device_ID,
+        "Email": this.Email,
+        "ErrorType": this.ErrorType,
+        "Description": this.Description
       }
 
       console.log(reportProblems);
-      this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", reportProblems)
+
+      this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", JSON.stringify(reportProblems))
         .subscribe(data => {
           console.log(data);
         }, error => {
