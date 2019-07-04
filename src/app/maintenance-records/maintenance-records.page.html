@@ -1,0 +1,49 @@
+<ion-content>
+  <div class="header">
+    <div class="overlay header-inside">
+
+      <div class="header-inside--icon-left float-left">
+        <img class="icon" src="assets/acuo-icons/rectangle_2@3x.png" alt="acuo-icons1">
+      </div>
+
+      <div class="header-inside--title-center float-left">
+        <img class="icon avatar" src="assets\acuo-avatar\group-6@3x.png" alt="acuo-avatar1">
+        <h5>Maintenance records</h5>
+      </div>
+
+      <div class="header-inside--icon-right float-left">
+        <img class="icon" src="assets\cancel\rectangle@3x.png" alt="acuo-cancel1">
+      </div>
+
+    </div>
+  </div>
+  <ion-list *ngFor="let yearData of maintenanceData">
+    <div *ngFor="let monthData of yearData.MonthMaintenance; let i = last">
+      <div class="headerList">
+        <span *ngIf="i">{{yearData.year}} </span>{{monthData.month}}
+      </div>
+      <div *ngFor="let data of monthData.DayMaintenance; let j = last">
+        <ion-item lines="none">
+          <ion-label fixed class="fixedLabel listAvatar">
+            <div>{{data.Day}}</div>
+            <div><img src="assets/cup-coffe/rectangle_3@3x.png" class="coffeImage"></div>
+          </ion-label>
+          <ion-label>
+            <div>{{data.ErrorMeaning}}</div>
+            <div>{{data.Description}}</div>
+          </ion-label>
+          <ion-icon mode="ios" name="arrow-forward"></ion-icon>
+        </ion-item>
+        <div *ngIf="!j" class="divider">
+        </div>
+      </div>
+    </div>
+
+
+
+  </ion-list>
+
+
+
+
+</ion-content>
