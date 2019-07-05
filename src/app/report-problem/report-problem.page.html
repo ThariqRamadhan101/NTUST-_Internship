@@ -3,7 +3,7 @@
     <div class="overlay header-inside">
 
       <div class="header-inside--icon-left float-left">
-        <img class="icon" src="assets/acuo-icons/rectangle_2@3x.png" alt="acuo-icons1">
+        <img class=" icon" src="assets/acuo-icons/rectangle_2@3x.png" alt="acuo-icons1">
       </div>
 
       <div class="header-inside--title-center float-left">
@@ -11,8 +11,9 @@
         <h5>Maintenance records</h5>
       </div>
 
+
       <div class="header-inside--icon-right float-left">
-        <img class="icon" src="assets\cancel\rectangle@3x.png" alt="acuo-cancel1">
+        <img class="icon" src="assets\cancel\rectangle@3x.png" alt="acuo-cancel1" (click)="AlertConfirm()">
       </div>
 
     </div>
@@ -34,7 +35,7 @@
     </section>
 
     <ion-item lines="none">
-      <ion-checkbox slot="start" mode="ios" color="medium" [(ngModel)]="tellRepair"></ion-checkbox>
+      <ion-checkbox slot="start" mode="ios" color="medium"></ion-checkbox>
       <ion-label>Tell me when the repair is complete</ion-label>
     </ion-item>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-report-problem',
@@ -14,6 +15,7 @@ export class ReportProblemPage implements OnInit {
   ErrorType = 0;
   Description: string = '';
 
+
   problems = [
     { problem: 'Button does not respond' },
     { problem: 'Unable to water' },
@@ -25,7 +27,7 @@ export class ReportProblemPage implements OnInit {
   public selected: string;
   public type;
 
-  constructor(private http: HttpClient) { }
+  constructor(public alertController: AlertController, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -56,6 +58,22 @@ export class ReportProblemPage implements OnInit {
 
       console.log(reportProblems);
 
+      const thank = await this.alertController.create({
+        mode: "ios",
+        header: 'Thank you for your assistance!',
+        message: 'We have received a problem report',
+        buttons: [
+          {
+            text: 'OK',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }
+        ]
+      });
+
+      await thank.present();
+
       this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", JSON.stringify(reportProblems))
         .subscribe(data => {
           console.log(data);
@@ -72,5 +90,30 @@ export class ReportProblemPage implements OnInit {
     this.ErrorType = 5;
 
   }
+
+  async AlertConfirm() {
+    const alert = await this.alertController.create({
+      mode: "ios",
+      header: 'Dicard Editing?',
+      message: 'If you go back now, you will lose editing.',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Discard',
+          cssClass: 'icon-color',
+          handler: () => {
+            console.log('Confirm Discard');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 
 }

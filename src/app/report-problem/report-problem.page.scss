@@ -48,4 +48,9 @@ ion-content {
     height: 100%;
     width: 100%;
     background-color: rgba($color: #000000, $alpha: 0.5);
+
+}
+
+ion-alert.my-alert {
+    color: red !important;
 }
