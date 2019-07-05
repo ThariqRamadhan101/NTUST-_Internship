@@ -2,16 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { ReportProblemPage } from './report-problem.page';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormDataPage } from './form-data.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ReportProblemPage
+    component: FormDataPage
   }
 ];
 
@@ -23,6 +22,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ReportProblemPage]
+  declarations: [FormDataPage]
 })
-export class ReportProblemPageModule { }
+export class FormDataPageModule { }

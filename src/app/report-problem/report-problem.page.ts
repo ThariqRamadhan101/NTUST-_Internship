@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-report-problem',
@@ -8,6 +9,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./report-problem.page.scss'],
 })
 export class ReportProblemPage implements OnInit {
+
+  uploadForm: FormGroup;
 
   File: any = [];
   Device_ID: string = "MA_B1_01";
@@ -27,7 +30,8 @@ export class ReportProblemPage implements OnInit {
   public selected: string;
   public type;
 
-  constructor(public alertController: AlertController, private http: HttpClient) { }
+
+  constructor(public alertController: AlertController, private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
@@ -74,7 +78,16 @@ export class ReportProblemPage implements OnInit {
 
       await thank.present();
 
-      this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", JSON.stringify(reportProblems))
+
+      this.uploadForm = this.formBuilder.group({
+        Email: ['AAAAA']
+      });
+
+      console.log(this.uploadForm.value);
+
+
+
+      this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", JSON.stringify(this.uploadForm.value))
         .subscribe(data => {
           console.log(data);
         }, error => {
