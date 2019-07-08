@@ -32,7 +32,7 @@
 
     <div class="imageContainer">
       <h4 lines="none">
-        Please Upload Image
+        Upload image optional
       </h4>
 
       <div class="image-upload">
@@ -49,7 +49,7 @@
     </section>
 
     <ion-item lines="none">
-      <ion-checkbox slot="start" mode="ios" color="medium"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="updateTrack" slot="start" mode="ios" color="medium"></ion-checkbox>
       <ion-label>Tell me when the repair is complete</ion-label>
     </ion-item>
 
