@@ -15,18 +15,8 @@ export class FormDataPage implements OnInit {
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      profile: ['AAAA'],
-      error: ['1']
+      profile: [''],
     });
-    const formData = new FormData();
-    formData.append('Email', this.uploadForm.get('profile').value);
-    formData.append('ErrorType', this.uploadForm.get('error').value);
-
-    console.log(formData);
-    this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
   }
 
   onFileSelect(event) {
@@ -37,7 +27,10 @@ export class FormDataPage implements OnInit {
   }
   onSubmit() {
     const formData = new FormData();
-    formData.append('Email', this.uploadForm.get('profile').value);
+    formData.append('File', this.uploadForm.get('profile').value);
+
+    formData.append('Email', 'namaku@gmail.com');
+    formData.append('ErrorType', '1');
     console.log(formData);
 
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(

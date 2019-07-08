@@ -30,6 +30,20 @@
       </ion-input>
     </ion-item>
 
+    <div class="imageContainer">
+      <h4 lines="none">
+        Please Upload Image
+      </h4>
+
+      <div class="image-upload">
+        <label for="file-input">
+          <img src="assets\upload-image\upload.png" class="uploadPhoto" />
+        </label>
+        <input id="file-input" accept="image/*" type="file" (change)="onFileSelect($event)" />
+      </div>
+
+    </div>
+
     <section>
       <ion-button expand="block" ion-button (click)="submit()">Submit</ion-button>
     </section>
@@ -39,5 +53,9 @@
       <ion-label>Tell me when the repair is complete</ion-label>
     </ion-item>
 
+
   </ion-list>
+
+
+
 </ion-content>

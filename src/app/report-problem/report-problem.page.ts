@@ -34,7 +34,11 @@ export class ReportProblemPage implements OnInit {
   constructor(public alertController: AlertController, private http: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.uploadForm = this.formBuilder.group({
+      image: [''],
+    });
   }
+
 
   public toggle(selected, type) {
     this.ErrorType = type + 1;
@@ -52,15 +56,16 @@ export class ReportProblemPage implements OnInit {
     if (this.ErrorType == 0) {
       console.log("You must fill problem")
     } else {
-      const reportProblems = {
-        "File": this.File,
-        "Device_ID": this.Device_ID,
-        "Email": this.Email,
-        "ErrorType": this.ErrorType,
-        "Description": this.Description
-      }
 
-      console.log(reportProblems);
+      const reportProblems = new FormData();
+
+      reportProblems.append('File', this.uploadForm.get('image').value);
+      reportProblems.append('Device_ID', '1');
+      reportProblems.append('Email', 'hehe@gmail.com');
+      reportProblems.append('ErrorType', String(this.ErrorType));
+      reportProblems.append('Description', '');
+
+      console.log(this.uploadForm);
 
       const thank = await this.alertController.create({
         mode: "ios",
@@ -79,15 +84,7 @@ export class ReportProblemPage implements OnInit {
       await thank.present();
 
 
-      this.uploadForm = this.formBuilder.group({
-        Email: ['AAAAA']
-      });
-
-      console.log(this.uploadForm.value);
-
-
-
-      this.http.post("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", JSON.stringify(this.uploadForm.value))
+      this.http.post<any>("https://smartcampus.et.ntust.edu.tw:5425/Dispenser/Report", reportProblems)
         .subscribe(data => {
           console.log(data);
         }, error => {
@@ -128,5 +125,13 @@ export class ReportProblemPage implements OnInit {
     await alert.present();
   }
 
+  onFileSelect(event) {
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('image').setValue(file);
+    }
+    console.log("jhaha");
+  }
 
 }

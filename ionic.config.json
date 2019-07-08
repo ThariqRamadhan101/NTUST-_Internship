@@ -1,5 +1,7 @@
 {
   "name": "NTUST_Intership",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
